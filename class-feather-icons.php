@@ -53,10 +53,15 @@ if (!class_exists('Feather_Icons')) :
 
             $args = wp_parse_args($args, $defaults);
 
+            if (empty($args['class']))
+                $args['class'] = 'wp-feather-icon';
+
             $icon = '';
 
+            $args['class'] .= ' ' . $args['class'] . '--' . $name;
+
             if (!empty($name)) {
-                $icon = sprintf($args['before'], $args['class'] . ' wp-feather-icon--' . $name);
+                $icon = sprintf($args['before'], $args['class']);
                 $icon .= self::instance($args['attributes'])->get_svg($name, $args['attributes'], false);
                 $icon .= $args['after'];
             }

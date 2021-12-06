@@ -19,5 +19,6 @@ function your_theme_name_get_icon($name = '', $args = array())
 
     $args = wp_parse_args( $args, $defaults );
 
-    Feather_Icons::get($name, $args);
+    if (class_exists('Feather_Icons'))
+        Feather_Icons::get($name, $args);
 }
